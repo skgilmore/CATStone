@@ -13,7 +13,7 @@ export const CatProvider = (props) => {
         .then(setCats)
     }
 
-    const addCats = animalObj => {
+    const addCat = animalObj => {
         return fetch("http://localhost:8088/cats", {
             method: "POST",
             headers: {
@@ -33,7 +33,7 @@ export const CatProvider = (props) => {
     */
     return (
         <CatContext.Provider value={{
-            cats, getCats, addCats
+            cats, getCats, addCat
     
         }}>
             {props.children}
