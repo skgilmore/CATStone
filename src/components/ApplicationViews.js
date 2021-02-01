@@ -1,7 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { CatList } from "./components/Cats/CatsList"
-import { CatProvider } from "./components/Cats/CatsProvider"
+import { CatList } from "./Cats/CatsList"
+import { CatProvider } from "./Cats/CatsProvider"
 import { Home } from "./Home"
 
 
@@ -9,11 +9,10 @@ import { Home } from "./Home"
 export const ApplicationViews = () => {
     return (
         <>
-            <Route exact path="/">
-                <Home />
-            </Route>
+           
             <CatProvider>
-                <Route exact path="/cats">
+                <Route exact path="/">
+                    <Home />
                     <CatList />
                 </Route>
             </CatProvider>

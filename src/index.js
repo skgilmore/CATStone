@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom"
-import { Capstone } from './Capstone';
+import { Capstone } from './components/Capstone';
 
 ReactDOM.render(
   <React.StrictMode>
