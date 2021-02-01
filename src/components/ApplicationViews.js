@@ -16,7 +16,8 @@ export const ApplicationViews = () => {
             </Route>
 
             <CatProvider>
-                <Route exact path="/cats">
+                <Route exact path="/">
+                    <Home />
                     <CatList />
                 </Route>
                 <Route exact path="/catS/detail/:catId(\d+)">
