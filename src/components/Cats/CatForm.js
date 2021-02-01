@@ -1,4 +1,4 @@
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, CardText } from 'reactstrap';
 import { useHistory, useParams } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from "react"
 import { CatContext } from './CatsProvider';
@@ -49,10 +49,18 @@ setCat(catAdopted)
 
 
     const handleAddCat= (event) => {
+        
       if (parseInt(cat.zip) === 0) {
-          window.alert("Please input a zip")
-      } else {
+          window.alert("Please input a zip code")
+      } 
+     else {
         setIsLoading(true);
+        {
+            if
+                 (parseInt(cat.color) === 0) 
+              window.alert("Please select a description")
+            }
+
         if (catId){
           //PUT - update
           updateCat({
@@ -75,6 +83,7 @@ setCat(catAdopted)
           //   customerId: parseInt(cat.customerId)
           })
           .then(() => history.push("/cats"))
+
         }
       }
     }
@@ -109,8 +118,9 @@ setCat(catAdopted)
       </FormGroup>
       <FormGroup>
         <Label for="color">Description</Label>
-        <Input type="select" name="color" id="color"onChange={handleControlledInputChange}  required autoFocus className="form-control"  value = {cat.color}>
-          <option>Orange</option>
+        <Input type="select" name="color" id="color"onChange={handleControlledInputChange}  required autoFocus className="form-control" placeholder=" Color of Cat" value = {cat.color}  >
+        <option value = "null" >Please Select a Color</option>
+          <option >Orange</option>
           <option>Yellow</option>
           <option>Gray</option>
           <option>Black</option>
@@ -136,13 +146,13 @@ setCat(catAdopted)
         <legend>Radio Buttons</legend>
         <FormGroup check>
           <Label check>  
-            <Input type="radio" name="adopted" id="adopted"onChange={adoption}required autoFocus className="form-control" value={cat.adopted}  />{' '} 
+            <Input type="radio" name="adopted" id="adopted"onChange={adoption} value={cat.adopted}  />{' '} 
             Do you take this cat to be yours for better or worse as long as you both shall live...in this neighborhood?
             </Label>
         </FormGroup>
         <FormGroup check>
           <Label check>
-            <Input type="radio" name="not" id="adopted"onChange={adoption} required autoFocus className="form-control"value={cat.adopted} />{' '}
+            <Input type="radio" name="not" id="adopted"onChange={adoption} value={cat.adopted} />{' '}
             This furry friend is in need of a home
           </Label>
         </FormGroup>
