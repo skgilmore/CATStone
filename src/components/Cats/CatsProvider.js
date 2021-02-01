@@ -23,17 +23,27 @@ export const CatProvider = (props) => {
         })
         .then(getCats)
     }
+    const getCatById = (id) => {
+        return fetch(`http://localhost:8088/cats/${id}`)
+            .then(res => res.json())
+    }
+    const deleteCat = catId => {
+        return fetch(`http://localhost:8088/cats/${catId}`, {
+            method: "DELETE"
+        })
+            .then(getCats)
+    }
 
     /*
         You return a context provider which has the
-        `cats` state, `getAnimals` function,
+        `cats` state, `getCats` deleteCats function,
         and the `addCats
 ` function as keys. This
         allows any child elements to access them.
     */
     return (
         <CatContext.Provider value={{
-            cats, getCats, addCat
+            cats, getCats, addCat, deleteCat, getCatById
     
         }}>
             {props.children}
