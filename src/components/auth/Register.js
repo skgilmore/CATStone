@@ -6,38 +6,41 @@ export const Register = (props) => {
     const firstName = useRef()
     const lastName = useRef()
     const email = useRef()
+    const zip = useRef()
     const verifyPassword = useRef()
     const conflictDialog = useRef()
     const history = useHistory()
-
+    
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
-            .then(res => res.json())
-            .then(user => !!user.length)
+        .then(res => res.json())
+        .then(user => !!user.length)
     }
-
+    
     const handleRegister = (e) => {
         e.preventDefault()
-
-
+        
+        
         existingUserCheck()
-            .then((userExists) => {
-                if (!userExists) {
-                    fetch("http://localhost:8088/users", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            email: email.current.value,
-                            name: `${firstName.current.value} ${lastName.current.value}`
-                        })
+        .then((userExists) => {
+            if (!userExists) {
+                fetch("http://localhost:8088/users", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email: email.current.value,
+                        name: `${firstName.current.value} ${lastName.current.value}`,
+                        zip: parseInt(zip.current.value)
+                        
                     })
+                })
                         .then(res => res.json())
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 localStorage.setItem("capstone_customer", createdUser.id)
-                                history.push("/")
+                                history.push("/cats")
                             }
                         })
                 }
@@ -57,7 +60,7 @@ export const Register = (props) => {
             </dialog>
 
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for NSS Kennels</h1>
+                <h1 className="h3 mb-3 font-weight-normal">Please Register for Mew Girl</h1>
                 <fieldset>
                     <label htmlFor="firstName"> First Name </label>
                     <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
@@ -69,6 +72,10 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="inputEmail"> Email address </label>
                     <input ref={email} type="email" name="email" className="form-control" placeholder="Email address" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="inputZip"> Zip Code </label>
+                    <input ref={zip} type="zip" name="zip" className="form-control" placeholder="Zip Code" required />
                 </fieldset>
                 <fieldset>
                     <button type="submit"> Sign in </button>
