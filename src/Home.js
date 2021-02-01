@@ -3,8 +3,8 @@ import { PropsAndState } from './components/PropsAndState'
 
 export const Home = () => (
     <>
-        <h2>Mew Girl</h2>
-        <small>Stray cats is a CATastrophe.</small>
+        <h3>Mew Girl</h3>
+        <h2>Stray cats are a CATastrophe.</h2>
 
         
 
