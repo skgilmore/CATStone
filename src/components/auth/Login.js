@@ -23,7 +23,7 @@ export const Login = props => {
             .then(exists => {
                 if (exists) {
                     localStorage.setItem("capstone_customer", exists.id)
-                    history.push("/")
+                    history.push("/cats")
                 } else {
                     existDialog.current.showModal()
                 }
