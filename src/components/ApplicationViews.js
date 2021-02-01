@@ -5,6 +5,7 @@ import { CatForm } from "../components/Cats/CatForm"
 import { CatList } from "../components/Cats/CatsList"
 import { CatProvider } from "../components/Cats/CatsProvider"
 import { Home } from "./Home"
+import { UserProvider } from "./Users/UsersProvider"
 
 
 
@@ -14,6 +15,7 @@ export const ApplicationViews = () => {
             
 
             <CatProvider>
+            <UserProvider>
                 <Route  exact path="/cats">
                     <CatList />
                 </Route>
@@ -23,6 +25,7 @@ export const ApplicationViews = () => {
                 <Route exact path="/cats/create">
                     <CatForm />
                 </Route>
+                </UserProvider>
             </CatProvider>
 
 

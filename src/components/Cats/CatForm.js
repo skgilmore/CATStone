@@ -2,15 +2,18 @@ import { Button, Form, FormGroup, Label, Input, FormText, CardText } from 'react
 import { useHistory, useParams } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from "react"
 import { CatContext } from './CatsProvider';
+import { UserContext } from '../Users/UsersProvider';
 
 export const CatForm = () => {
-    const { addCat, getCatById, updateCat } = useContext(CatContext)
-    // const { customers, getCustomers } = useContext(CustomerContext)
+    const { addCat, getCatById, getCats,updateCat } = useContext(CatContext)
+    const { users, getUsers } = useContext(UserContext)
+    
 
     //for edit, hold on to state of cat in this view
     const [cat, setCat] = useState({
+      id: 0,
       name: "",
-      adopted: "",
+      userId: 0,
       zip: 0,
       color: "",
 
@@ -22,30 +25,34 @@ export const CatForm = () => {
     // Now that the form can be used for editing as well as adding an cat, you need access to the cat id for fetching the cat you want to edit
     const { catId } = useParams();
       const history = useHistory();
+      
           // Get customers and locations. If catId is in the URL, getCatById
     useEffect(() => {
-        
+      getUsers().then(getCats)
+        console.log(getCatById,"all cats?")
     
     }, [])
 
+    //  Ok soo to get capstone customer getItem. ParseInt it later in cat props. add the value of the capstone customer to the 
+    // new cat using dot notation
     const handleControlledInputChange = (event) => {
       const newCat = { ...cat }
       newCat[event.target.id] = event.target.value
+      const currentUser = localStorage.getItem("capstone_customer")
+      console.log (currentUser,"user")
+        if  (event.target.name.includes("adopted")) { 
+          newCat.userId = currentUser
+          
+          console.log(currentUser,"whats here?")
+        }
+        else { 
+            event.target.value = 0
+        }
       setCat(newCat)
+      console.log(newCat)
     }
 
-    const adoption = (event) => {
-        const catAdopted = { ... cat }
-        let selection = event.target.value
-       if  (event.target.name.includes("adopted")) { 
-           selection = true
-    }
-    else {
-        selection =false
-    }
-  catAdopted[event.target.id] = selection
-setCat(catAdopted)
-    }
+
 
 
     const handleAddCat= (event) => {
@@ -68,8 +75,7 @@ setCat(catAdopted)
               name: cat.name,
               color: cat.color,
               zip: parseInt(cat.zip),
-              adopted: cat.value
-            //   customerId: parseInt(cat.customerId)
+              userId: parseInt(cat.userId)
           })
           .then(() => history.push(`/cats/detail/${cat.id}`))
         }else {
@@ -79,8 +85,7 @@ setCat(catAdopted)
             name: cat.name,
             color: cat.color,
             zip: parseInt(cat.zip),
-            adopted: cat.adopted
-          //   customerId: parseInt(cat.customerId)
+            userId: parseInt(cat.userId)
           })
           .then(() => history.push("/cats"))
 
@@ -146,13 +151,14 @@ setCat(catAdopted)
         <legend>Radio Buttons</legend>
         <FormGroup check>
           <Label check>  
-            <Input type="radio" name="adopted" id="adopted"onChange={adoption} value={cat.adopted}  />{' '} 
+          {/* <Label for="newCatName">Name</Label> */}
+            <Input type="radio" name="adopted" id="userId"onChange={handleControlledInputChange} value={cat.userId}  />{' '} 
             Do you take this cat to be yours for better or worse as long as you both shall live...in this neighborhood?
             </Label>
         </FormGroup>
         <FormGroup check>
           <Label check>
-            <Input type="radio" name="not" id="adopted"onChange={adoption} value={cat.adopted} />{' '}
+            <Input type="radio" name="not" id="userId"onChange={handleControlledInputChange} value={cat.userId} />{' '}
             This furry friend is in need of a home
           </Label>
         </FormGroup>
