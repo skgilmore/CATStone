@@ -12,7 +12,6 @@ export const CatProvider = (props) => {
         .then(res => res.json())
         .then(setCats)
     }
-
     const addCat = catObj => {
         return fetch("http://localhost:8088/cats?_expand=user", {
             method: "POST",
@@ -23,10 +22,14 @@ export const CatProvider = (props) => {
         })
         .then(getCats)
     }
+    
+
     const getCatById = (id) => {
         return fetch(`http://localhost:8088/cats/${id}?_expand=user`)
             .then(res => res.json())
+            
     }
+
     const deleteCat = catId => {
         return fetch(`http://localhost:8088/cats/${catId}`, {
             method: "DELETE"
@@ -43,7 +46,7 @@ export const CatProvider = (props) => {
     */
     return (
         <CatContext.Provider value={{
-            cats, getCats, addCat, deleteCat, getCatById
+            cats, getCats, addCat, deleteCat, getCatById, 
     
         }}>
             {props.children}

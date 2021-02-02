@@ -8,6 +8,6 @@ export const CatCard = ({ cat }) => (
         <Link to={`/cats/detail/${cat.id}`}>
             { cat.name }
           </Link>
-        <address className="location__address">{cat.zip}</address>
+        <address className="cat__zip">{cat.zip}</address>
     </section>
 )
