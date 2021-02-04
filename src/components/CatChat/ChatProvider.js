@@ -29,6 +29,7 @@ const getChatById = (id) => {
         })
         // .then(getChats)
         .then(response => response.json())
+        .then(getChats)
 
 }
 const updateChat = chat => {

@@ -31,7 +31,8 @@ export const ChatForm = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     // Now that the form can be used for editing as well as adding an cat, you need access to the cat id for fetching the cat you want to edit
-    const { chatId } = useParams();
+    const { catId } = useParams();
+    const { chatId } =useParams
     const history = useHistory();
 
     // Get customers and locations. If catId is in the URL, getCatById
@@ -40,14 +41,23 @@ export const ChatForm = () => {
         // console.log(getCats, "wheres my shit")
         // .then(getChats)
         
-        // getCatById()
+        getCatById()
         // .then((response) => {
+            //    if (chatId) {
+
                 getChats()
-                   
-                getUsersById(currentUser)
+            //     .then(chat => {
+            //         setChat(chat)
+            //         setIsLoading(false)
+            //     })
+            //   } else {
+            //     setIsLoading(false)
+            //   }
+            //     getUsersById(currentUser)
 
             
     }, [])
+     const submitAndClear = () => {}
  
 
     //  Ok soo to get capstone customer getItem. ParseInt it later in cat props. add the value of the capstone customer to the 
@@ -60,66 +70,72 @@ export const ChatForm = () => {
     console.log(newChat, "chat adds?") 
     
         setChat(newChat)
+        .then((function handleSubmit(e) {
+            // e.preventDefault();
+            // console.log(email, password);
+            // clearing the values
+            setChat("");}))
         console.log(newChat)
     }
 
 
-  
-  
-      
-          //invoke addAnimal passing animal as an argument.
-          //once complete, change the url and display the animal list
-    
 
     const handleAddChat = (event) => {
         
         if (chatId) {
             //PUT - update
-            updateChat({
-                id: chat.id,
-                note: chat.note,
-                catId: parseInt(cats.id),
-                userId: parseInt(chat.userId)
-            })
-                .then(() => history.push(`/chats/detail/${chat.id}`))
+            // updateChat({
+            //     id: chat.id,
+            //     note: chat.note,
+            //     catId: parseInt(cats.id),
+            //     userId: parseInt(chat.userId)
+            // })
+            //     .then(() => history.push("/cats/detail/:catId(\d+)"))
         } else {
             //POST - add
             addChat({
                 id: chat.id,
                 note: chat.note,
-                catId: parseInt(cats.id),
+                catId: parseInt(catId),
                 userId: parseInt(chat.userId)
 
             })
-                .then(() => history.push("/chats"))
+                .then(() => history.push(`/cats/detail/${catId}`))
 
         }
     }
-
-
-
+    
+      
+   
     return (
         <Form className>
             <h2>Cat Chat</h2>
             <div className="chat"></div>
             <FormGroup>
                 <Label for="newChat"></Label>
-                <Input type="text" name="chat" id="note" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Type Your message Here" value={chat.note} />
+                <Input type="type"  name="chat" id="note" onChange={handleControlledInputChange} required autoFocus className="form-control" 
+                placeholder="Chat" value={chat.note} 
+            onChange={(e) => setChat(e.target.placeholder)} />
                 </FormGroup>
-                {
-                    filteredChats.map(chat => {
-                        // take the list of filteredCats you used in use state and give me their info
-                        return <ChatCard key={chat.id}   note={chat.note}/>
-                    })
-
-                } 
+              
                 <div> 
-        
-                <Button color="info" onClick={event  => { 
-                    
-                    handleAddChat()
+        <div className="refreshChat">
+                    {
+                        filteredChats.map(chat => {
+                            // take the list of filteredCats you used in use state and give me their info
+                            return <ChatCard key={chat.id}   note={chat.note}/>
+                        })
+    
 
-                }}>{chatId ? "Save Chat" : "Add Cat"}</Button>
+                    } 
+                    </div>
+                <Button color="info" type="reset"
+                 onClick={event  => { 
+                     handleAddChat()
+                     
+                    }}>
+                        
+                        {chatId ? "Save Chat" : "Send Chat"}</Button>
                 </div> 
 
     </Form>

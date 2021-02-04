@@ -22,16 +22,17 @@ export const ApplicationViews = () => {
                         <Route exact path="/cats">
                             <CatList />
                         </Route>
-                        <Route exact path="/cats/detail/:catId(\d+)">
+                        <Route  path="/cats/detail/:catId(\d+)">
                             <CatDetail />
                         </Route>
-                        <Route path="/chat/create">
+                        <Route path ="/cats/detail/:catId(\d+)">
+
                             <ChatForm />
-                        
-                        </Route>
-                        <Route exact path="/chats/detail/:chatId(\d+)">
                             <ChatList />
+
                         </Route>
+                        
+                        
                      
                         <Route exact path="/cats/create">
                             <CatForm />

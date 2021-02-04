@@ -59,7 +59,7 @@ const [filteredChats, setFilteredChats] = useState([])
         //   disabled={isLoading}
         // onClick={handleRelease}>Cat Chat</Button>
          onClick={() => {
-            history.push(`/chat/create/`)
+            history.push(`/cats/detail/:catId(\d+)`)
           }}>Cat Chat</Button>
                   <div className="chats">
                   
