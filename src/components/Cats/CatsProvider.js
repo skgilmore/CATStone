@@ -25,7 +25,7 @@ export const CatProvider = (props) => {
     
 
     const getCatById = (id) => {
-        return fetch(`http://localhost:8088/cats/${id}?_expand=user`)
+        return fetch(`http://localhost:8088/cats/${id}`)
             .then(res => res.json())
             
     }

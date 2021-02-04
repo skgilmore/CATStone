@@ -4,6 +4,7 @@ import { CatCard } from "./CatCard"
 import { CatContext } from "./CatsProvider"
 import { Button, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { UserContext } from "../Users/UsersProvider";
+import { ChatContext } from "../CatChat/ChatProvider";
 
 
 
@@ -64,8 +65,10 @@ n
                 {console.log(cats, "allCats")}
                 {
                     filteredCats.map(cat => {
+                        
+                     
 // take the list of filteredCats you used in use state and give me their info
-                        return <CatCard key={cat.id} cat={cat} zip={cat.zip} />
+                        return <CatCard key={cat.id} cat={cat} zip={cat.zip}  />
                     })
 
                 }
