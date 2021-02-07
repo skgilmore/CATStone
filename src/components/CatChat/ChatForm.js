@@ -9,83 +9,80 @@ import { ChatCard } from './ChatCard';
 
 
 export const ChatForm = () => {
-    const { chats, getChats, getChatById,deleteChat, updateChat, addChat } = useContext(ChatContext)
-    const {  getCatById, getCats, cats} = useContext(CatContext)
+    const { chats, getChats, getChatById, deleteChat, updateChat, addChat } = useContext(ChatContext)
+    const { getCatById, getCats, cats } = useContext(CatContext)
     const { users, getUsersById } = useContext(UserContext)
 
 
     const [filteredChats, setFilteredChats] = useState([])
     const currentUser = (localStorage.getItem("capstone_customer"))
-// *I want to get all of the notes with a matching cat id
-// *display all of the notes for the specific cat
-// be able to add/ edit/ delete a specif note
+    // *I want to get all of the notes with a matching cat id
+    // *display all of the notes for the specific cat
+    // be able to add/ edit/ delete a specif note
 
-    //for edit, hold on to state of cat in this view
+    /* -------------------- ASSIGN PROPS TO A CHAT AND HOLD STATE OF CHAT IN CURRENT VIEW -------------------- */
+
+
     const [chat, setChat] = useState({
         note: "",
         catId: 0,
         userId: 0
     })
+    /* --------------WAIT FOR DATA BEFORE BTN IS ACTIVE -------------------- */
 
-    //wait for data before button is active. Look at the button to see how it's setting itself to disabled or not based on this state
+
     const [isLoading, setIsLoading] = useState(true);
 
-    // Now that the form can be used for editing as well as adding an cat, you need access to the cat id for fetching the cat you want to edit
+    /* -------------------- ACCESS THE ID OF A CHAT SO THAT YOU CAN FETCH THE ONE YOU WANT TO EDIT-------------------- */
+
     const { catId } = useParams();
-    const { chatId } =useParams
+    const { chatId } = useParams
     const history = useHistory();
 
-    // Get customers and locations. If catId is in the URL, getCatById
-    useEffect(() => {
-        // getCats()
-        // console.log(getCats, "wheres my shit")
-        // .then(getChats)
-        
-        getCatById()
-        // .then((response) => {
-               if (chatId) {
+    /* -------------------GET CATS BY ID W/ PARAMS, THEN GET CHATS-------------------- */
 
-                getChats()
+
+    useEffect(() => {
+
+
+        getCatById()
+        if (chatId) {
+
+            getChats()
                 .then(chat => {
                     setChat(chat)
                     setIsLoading(false)
                 })
-              } else {
-                setIsLoading(false)
-              }
-                // getUsersById(currentUser)
+        } else {
+            setIsLoading(false)
+        }
 
-            
+
     }, [])
-    //  const submitAndClear = () => {}
- 
+    /* -------------------CHECK CURRENT USER AND SET NEW PROPS W/ DOT NOTATION -------------------- */
 
-    //  Ok soo to get capstone customer getItem. ParseInt it later in cat props. add the value of the capstone customer to the 
-    // new cat using dot notation
+
+
     const handleControlledInputChange = (event) => {
         const newChat = { ...chat }
         newChat[event.target.id] = event.target.value
         const currentUser = localStorage.getItem("capstone_customer")
         newChat.userId = currentUser
-    console.log(newChat, "chat adds?") 
-    
+        console.log(newChat, "chat adds?")
+
         setChat(newChat)
-        // .then((function handleSubmit(e) {
-        //     // e.preventDefault();
-        //     // clearing the values
-        //     setChat("");}))
-        // console.log(newChat)
+
     }
 
     const handleRelease = () => {
         deleteChat(chat.id)
-          .then(() => {
-            history.push("/cats/detail/${catId}")
-          })
-      }
+            .then(() => {
+                history.push("/cats/detail/${catId}")
+            })
+    }
 
     const handleAddChat = (event) => {
-        
+
         if (chatId) {
             // PUT - update
             // updateChat({
@@ -105,25 +102,25 @@ export const ChatForm = () => {
 
             })
                 .then(() => history.push(`/cats/detail/${catId}`))
-            }
-            
+        }
+
     }
-    
-      
-   
+
+    /* -------------------- ALLOW USERS TO ADD A CHAT AND DESIGNATE PROPS USING FORM -------------------- */
+
+
     return (
         <Form className>
             <h2>Cat Chat</h2>
             <div className="chat"></div>
             <FormGroup>
                 <Label for="newChat"></Label>
-                <Input type="type"  name="chat" id="note" onChange={handleControlledInputChange} required autoFocus className="form-control" 
-                placeholder="Chat" value={chat.note} 
-            // onChange={(e) => setChat(e.target.placeholder)} 
-            />
-                </FormGroup>
-              
-                {/* <div> 
+                <Input type="type" name="chat" id="note" onChange={handleControlledInputChange} required autoFocus className="form-control"
+                    placeholder="Chat" value={chat.note}
+                />
+            </FormGroup>
+
+            {/* <div> 
         <div className="refreshChat">
                     {
                         filteredChats.map(chat => {
@@ -135,18 +132,18 @@ export const ChatForm = () => {
                     } 
                 
                     </div> */}
-<div>
+            <div>
 
 
                 <Button color="success" type="reset"
-                 onClick={event  => { 
-                     handleAddChat()
-                     
-                    }}>
-                        
-                        {chatId ? "Save Chat" : "Add Chat"}</Button>
-                </div> 
+                    onClick={event => {
+                        handleAddChat()
 
-    </Form>
-  );
+                    }}>
+
+                    {chatId ? "Save Chat" : "Add Chat"}</Button>
+            </div>
+
+        </Form>
+    );
 }

@@ -8,8 +8,11 @@ import { ChatContext } from "./ChatProvider"
 export const ChatList = () => {
   const { chats, getChats} = useContext(ChatContext)
 
+    //-------------------- CHAT INFO TO BE DISPLAYED ON THE DOM ------------
+
+
  useEffect(() => {
-    console.log("AnimalList: useEffect - getAnimals")
+    console.log("CHAT DETAILS RENDER")
     getChats()
     
 
