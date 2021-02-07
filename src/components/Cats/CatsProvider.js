@@ -1,9 +1,12 @@
 import React, { useState, createContext } from "react"
 
-// The context is imported and used by individual components that need data
+
+/* -------------------- ALLOW IMPORT OF CONTEXT TO TO BE USED BY INDIVIDUAL COMPONENTS-------------------- */
+
 export const CatContext = createContext()
 
-// This component establishes what data can be used.
+/* -------------------- To have access to cats, and specific cats based on their properties -------------------- */
+
 export const CatProvider = (props) => {
     const [cats, setCats] = useState([])
 
@@ -27,7 +30,6 @@ export const CatProvider = (props) => {
     const getCatById = (id) => {
         return fetch(`http://localhost:8088/cats/${id}`)
             .then(res => res.json())
-            
     }
 
     const deleteCat = catId => {
@@ -44,6 +46,7 @@ export const CatProvider = (props) => {
 ` function as keys. This
         allows any child elements to access them.
     */
+   /* -------------------- To make the cats, and the cat functions available to other components i.e. expose child elements -------------------- */
     return (
         <CatContext.Provider value={{
             cats, getCats, addCat, deleteCat, getCatById, 

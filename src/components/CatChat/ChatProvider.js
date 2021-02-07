@@ -1,9 +1,8 @@
 import React, { useState, createContext } from "react"
 
-// The context is imported and used by individual components that need data
+/* -------------------- ALLOW IMPORT OF CONTEXT TO TO BE USED BY INDIVIDUAL COMPONENTS-------------------- */
 export const ChatContext = createContext()
 
-// This component establishes what data can be used.
 export const ChatProvider = (props) => {
     const [chats, setChats] = useState([])
 
@@ -13,7 +12,7 @@ const getChats = () => {
     .then(setChats)
 }
 const getChatById = (id) => {
-    return fetch(`http://localhost:8088/chats/${id}`)
+    return fetch(`http://localhost:8088/chats/${id}?_expand=cat`)
         .then(res => res.json())
         
 }
@@ -27,8 +26,8 @@ const getChatById = (id) => {
             },
             body: JSON.stringify(chat)
         })
-        // .then(getChats)
         .then(response => response.json())
+        .then(getChats)
 
 }
 const updateChat = chat => {
@@ -48,6 +47,8 @@ const deleteChat = chatId => {
     })
         .then(getChats)
 }
+   /* -------------------- To make the cHats, and the cHat functions available to other components i.e. expose child elements -------------------- */
+
 return (
     <ChatContext.Provider value={{
         chats, getChats, addChat, deleteChat, getChatById, updateChat
