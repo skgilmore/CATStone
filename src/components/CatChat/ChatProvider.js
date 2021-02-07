@@ -13,7 +13,7 @@ const getChats = () => {
     .then(setChats)
 }
 const getChatById = (id) => {
-    return fetch(`http://localhost:8088/chats/${id}`)
+    return fetch(`http://localhost:8088/chats/${id}?_expand=cat`)
         .then(res => res.json())
         
 }

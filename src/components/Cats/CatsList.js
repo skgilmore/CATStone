@@ -47,8 +47,8 @@ n
                         const filteredCatByZip = cats.filter(cat => cat.zip === user.zip)
                         
                         setFilteredCats(filteredCatByZip)
+                        getCats()
                     })
-
             })
     }, [])
 
@@ -68,7 +68,7 @@ n
                         
                      
 // take the list of filteredCats you used in use state and give me their info
-                        return <CatCard key={cat.id} cat={cat} zip={cat.zip}  />
+                        return <CatCard key={cat.id} cat={cat} zip={cat.zip} pic={cat.pic}  />
                     })
 
                 }

@@ -9,7 +9,7 @@ import { ChatCard } from './ChatCard';
 
 
 export const ChatForm = () => {
-    const { chats, getChats, getChatById, updateChat, addChat } = useContext(ChatContext)
+    const { chats, getChats, getChatById,deleteChat, updateChat, addChat } = useContext(ChatContext)
     const {  getCatById, getCats, cats} = useContext(CatContext)
     const { users, getUsersById } = useContext(UserContext)
 
@@ -43,21 +43,21 @@ export const ChatForm = () => {
         
         getCatById()
         // .then((response) => {
-            //    if (chatId) {
+               if (chatId) {
 
                 getChats()
-            //     .then(chat => {
-            //         setChat(chat)
-            //         setIsLoading(false)
-            //     })
-            //   } else {
-            //     setIsLoading(false)
-            //   }
-            //     getUsersById(currentUser)
+                .then(chat => {
+                    setChat(chat)
+                    setIsLoading(false)
+                })
+              } else {
+                setIsLoading(false)
+              }
+                // getUsersById(currentUser)
 
             
     }, [])
-     const submitAndClear = () => {}
+    //  const submitAndClear = () => {}
  
 
     //  Ok soo to get capstone customer getItem. ParseInt it later in cat props. add the value of the capstone customer to the 
@@ -70,27 +70,31 @@ export const ChatForm = () => {
     console.log(newChat, "chat adds?") 
     
         setChat(newChat)
-        .then((function handleSubmit(e) {
-            // e.preventDefault();
-            // console.log(email, password);
-            // clearing the values
-            setChat("");}))
-        console.log(newChat)
+        // .then((function handleSubmit(e) {
+        //     // e.preventDefault();
+        //     // clearing the values
+        //     setChat("");}))
+        // console.log(newChat)
     }
 
-
+    const handleRelease = () => {
+        deleteChat(chat.id)
+          .then(() => {
+            history.push("/cats/detail/${catId}")
+          })
+      }
 
     const handleAddChat = (event) => {
         
         if (chatId) {
-            //PUT - update
+            // PUT - update
             // updateChat({
             //     id: chat.id,
             //     note: chat.note,
             //     catId: parseInt(cats.id),
             //     userId: parseInt(chat.userId)
             // })
-            //     .then(() => history.push("/cats/detail/:catId(\d+)"))
+            //     .then(() => history.push(`/cats/detail/${catId}`))
         } else {
             //POST - add
             addChat({
@@ -101,8 +105,8 @@ export const ChatForm = () => {
 
             })
                 .then(() => history.push(`/cats/detail/${catId}`))
-
-        }
+            }
+            
     }
     
       
@@ -115,10 +119,11 @@ export const ChatForm = () => {
                 <Label for="newChat"></Label>
                 <Input type="type"  name="chat" id="note" onChange={handleControlledInputChange} required autoFocus className="form-control" 
                 placeholder="Chat" value={chat.note} 
-            onChange={(e) => setChat(e.target.placeholder)} />
+            // onChange={(e) => setChat(e.target.placeholder)} 
+            />
                 </FormGroup>
               
-                <div> 
+                {/* <div> 
         <div className="refreshChat">
                     {
                         filteredChats.map(chat => {
@@ -128,14 +133,18 @@ export const ChatForm = () => {
     
 
                     } 
-                    </div>
-                <Button color="info" type="reset"
+                
+                    </div> */}
+<div>
+
+
+                <Button color="success" type="reset"
                  onClick={event  => { 
                      handleAddChat()
                      
                     }}>
                         
-                        {chatId ? "Save Chat" : "Send Chat"}</Button>
+                        {chatId ? "Save Chat" : "Add Chat"}</Button>
                 </div> 
 
     </Form>

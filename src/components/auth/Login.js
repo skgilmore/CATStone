@@ -13,19 +13,7 @@ export const Login = props => {
     const password = useRef()
     const existDialog = useRef()
     const history = useHistory()
-    // const { cats, getCats, getCatsById} = useContext(CatContext)
-    // const {users, getUsers , getUsersById, setUsers} = useContext(UserContext)
-    // const [cat, setCat, user, setUser] = useState({})
-    // const {catZip} = useParams();
-    
-    // useEffect(() => {
-    //     console.log("useEffect", catZip)
-    //     getCatsById(catZip)
-    //     .then((response) => {
-    //         setCat(response)
-    //         .then(getUsers)
-    //     })
-    // }, [])
+ 
 
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
@@ -40,28 +28,6 @@ export const Login = props => {
             .then(exists => {
                 if (exists) {
                     localStorage.setItem("capstone_customer", exists.id)
-                    
-        // const currentUser = (localStorage.getItem("capstone_customer"))
-        // const currentUserFilter = currentUser.find (  (u) => u.id ===parseInt(currentUser) )
-        // const filterUsers = currentUserFilter.filter(
-        //   userObject => {
-        //     if (userObject.id  === currentUserFilter.id) {
-              
-           
-        //       return userObject
-              
-        //     }
-        // }
-        // )
-        // // console.log(userObject)
-        // setUsers(filterUsers)
-        //             {
-        //                 cats.map(cat => {
-        //                    const neighbor = users.find(u => u.zip === cat.zip)
-        //                    return <CatCard key={cat.id} cat={cat} user={neighbor} zip={cat.zip} />
-        //                })
-                       
-        //            }
 
                     history.push("/cats")
                 } else {

@@ -16,6 +16,7 @@ export const CatForm = () => {
       userId: 0,
       zip: 0,
       color: "",
+      pic: ""
 
     })
 
@@ -75,7 +76,8 @@ export const CatForm = () => {
               name: cat.name,
               color: cat.color,
               zip: parseInt(cat.zip),
-              userId: parseInt(cat.userId)
+              userId: parseInt(cat.userId),
+              pic: cat.pic
           })
           .then(() => history.push(`/cats/detail/${cat.id}`))
         }else {
@@ -85,7 +87,8 @@ export const CatForm = () => {
             name: cat.name,
             color: cat.color,
             zip: parseInt(cat.zip),
-            userId: parseInt(cat.userId)
+            userId: parseInt(cat.userId),
+            pic: cat.pic
           })
           .then(() => history.push("/cats"))
 
