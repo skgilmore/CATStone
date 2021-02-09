@@ -3,6 +3,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } fr
 import { useParams, useHistory } from "react-router-dom"
 import { CatContext } from "./CatsProvider"
 import Black from '../images/Black.png'
+import "./Cats.css"
 
 import { ChatContext } from "../CatChat/ChatProvider";
 import { ChatCard } from "../CatChat/ChatCard";
@@ -29,21 +30,19 @@ export const CatDetail = () => {
     getCatById(catId)
     // console.log("this is my cat", catId)
       .then((response) => {
-        // getChats(response.id)
-        //   .then((chat) => {
-        //     const filteredChatsByCat = chats.filter(chat => chat.catId === cat.id)
-        //     setFilteredChats(filteredChats)
+        getChats(response.id)
+          .then((chat) => {
+            const filteredChatsByCat = chats.filter(chat => chat.catId === cat.id)
+            setFilteredChats(filteredChats)
             
         //     debugger
-        //   })
-          setCat(response)
+        setCat(response)
+          })
           console.log("mycat" ,response)
           
 
       })
   }, [])
-
-  // cat.pic ? cat.pic : cat.pic=defaultCatPic
   if (cat.pic === "") {
     let defaultCatPic = Black
     cat.pic = defaultCatPic

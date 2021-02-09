@@ -17,7 +17,6 @@ export const ChatForm = () => {
     const [filteredChats, setFilteredChats] = useState([])
     const currentUser = (localStorage.getItem("capstone_customer"))
     // *I want to get all of the notes with a matching cat id
-    // *display all of the notes for the specific cat
     // be able to add/ edit/ delete a specif note
 
     /* -------------------- ASSIGN PROPS TO A CHAT AND HOLD STATE OF CHAT IN CURRENT VIEW -------------------- */
@@ -42,26 +41,26 @@ export const ChatForm = () => {
     /* -------------------GET CATS BY ID W/ PARAMS, THEN GET CHATS-------------------- */
 
 
-    // useEffect(() => {
+    useEffect(() => {
 
 
-    //     // getCatById()
-    //     // if (chatId) {
+        getCatById(catId)
+        if (chatId) {
 
-    //         getChats()
-    //             .then(chat => {
-    //                 setChat(chat)
-    //                 setIsLoading(false)
-    //             })
-    //     } else {
-    //         setIsLoading(false)
-    //     }
+            getChats()
+                .then(chat => {
+                    setChat(chat)
+                    setIsLoading(false)
+                    setFilteredChats(chat)
+                })
+        } else {
+            setIsLoading(false)
+        }
 
 
-    // }, [])
+    }, [])
+
     /* -------------------CHECK CURRENT USER AND SET NEW PROPS W/ DOT NOTATION -------------------- */
-
-
 
     const handleControlledInputChange = (event) => {
         const newChat = { ...chat }
@@ -69,20 +68,10 @@ export const ChatForm = () => {
         const currentUser = localStorage.getItem("capstone_customer")
         newChat.userId = currentUser
         console.log(newChat, "chat adds?")
-
         setChat(newChat)
-
-    }
-
-    const handleRelease = () => {
-        deleteChat(chat.id)
-            .then(() => {
-                history.push("/cats/detail/${catId}")
-            })
     }
 
     const handleAddChat = (event) => {
-
         if (chatId) {
             // PUT - update
             // updateChat({
@@ -102,44 +91,39 @@ export const ChatForm = () => {
 
             })
                 .then(() => history.push(`/cats/detail/${catId}`))
+                .then(window.location.reload())
         }
 
     }
-    // handleFieldChange = evt => {
-    //     const stateToChange = {}
-    //     stateToChange[evt.target.id] = evt.target.value
-    //     setState(stateToChange)
-    //     sendMessage(e, this.state.messageField)
-    //     setState({messageField: ""})
-    //   }
+ 
+    
+ 
     /* -------------------- ALLOW USERS TO ADD A CHAT AND DESIGNATE PROPS USING FORM -------------------- */
-
-
     return (
-        <Form className>
+        <Form>
             <h2>Cat Chat</h2>
             <div className="chat"></div>
             <FormGroup>
                 <Label for="newChat"></Label>
                 <Input type="type" name="chat" id="note" onChange={handleControlledInputChange} required autoFocus className="form-control"
                     placeholder="Chat" value={chat.note}
-                    // onInput= {e => handleFieldChange (e)}
+                // onInput= {e => handleFieldChange (e)}
                 />
             </FormGroup>
 
-            {/* <div> 
-        <div className="refreshChat">
+            <div>
+                <div className="refreshChat">
                     {
                         filteredChats.map(chat => {
                             // take the list of filteredCats you used in use state and give me their info
-                            return <ChatCard key={chat.id}   note={chat.note}/>
+                            return <ChatCard key={chat.id} note={chat.note} />
                         })
-    
 
-                    } 
-                
-                    </div> */}
-            <div>
+
+                    }
+
+                </div>
+
 
 
                 <Button color="success" type="reset"
@@ -147,7 +131,6 @@ export const ChatForm = () => {
                         handleAddChat()
 
                     }}>
-
                     {chatId ? "Save Chat" : "Add Chat"}</Button>
             </div>
 

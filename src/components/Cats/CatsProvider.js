@@ -13,9 +13,13 @@ export const CatProvider = (props) => {
     const getCats = () => {
         return fetch("http://localhost:8088/cats")
         .then(res => res.json())
-        .then(setCats)
+        .then((cats) => {
+            setCats(cats)
+            return cats
+          })
+      
     }
-    
+
     const addCat = catObj => {
         return fetch("http://localhost:8088/cats", {
             method: "POST",
@@ -32,6 +36,7 @@ export const CatProvider = (props) => {
         console.log("why now")
         return fetch(`http://localhost:8088/cats/${catId}?_embed=chats`)
             .then(res => res.json())
+            
             
     }
 

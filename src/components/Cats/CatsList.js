@@ -5,6 +5,7 @@ import { CatContext } from "./CatsProvider"
 import { Button, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { UserContext } from "../Users/UsersProvider";
 import { ChatContext } from "../CatChat/ChatProvider";
+import "./Cats.css"
 
 
 
@@ -12,7 +13,7 @@ import { ChatContext } from "../CatChat/ChatProvider";
 export const CatList = () => {
     /* -------------------- To have access to cats -------------------- */
 
-    const { cats, getCats, getCatsById } = useContext(CatContext)
+    const {  getCats, getCatsById } = useContext(CatContext)
     const { users, getUsers, getUsersById } = useContext(UserContext)
     const history = useHistory()
     const { catZip } = useParams();
@@ -28,7 +29,7 @@ export const CatList = () => {
 
     const currentUser = (localStorage.getItem("capstone_customer"))
 
-
+const [cats, setCats] = useState([])
     const [isLoading, setIsLoading] = useState(true);
 
     /* -------------------- Get all cats. Get user based on current user. Filter all cats whose zip macth users zip -------------------- */
@@ -39,15 +40,15 @@ export const CatList = () => {
 
     useEffect(() => {
         getCats()
-            .then((response) => {
-                getUsersById(currentUser)
-                .then((user) => {
-                    console.log("cats",cats)
-                    const filteredCatByZip = cats.filter(cat => cat.zip === user.zip)
-                    debugger
-                    setFilteredCats(filteredCatByZip)
-                })
+        .then((cats) => {
+            setCats(cats)
+            getUsersById(currentUser)
+            .then((user) => {
+                console.log("cats",cats)
+                const filteredCatByZip = cats.filter(cat => cat.zip === user.zip)
+                setFilteredCats(filteredCatByZip)
             })
+        })
     }, [])
 
     return (

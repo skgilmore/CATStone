@@ -10,7 +10,7 @@ export const ChatList = () => {
   const { chats, getChats} = useContext(ChatContext)
   // const { getUsersById } = useContext(UserContext)
 
-  // const [filteredChats, setFilteredChats] = useState([])
+  const [filteredChats, setFilteredChats] = useState([])
 
   const [cat, setCat] = useState({})
 
@@ -35,20 +35,20 @@ export const ChatList = () => {
     // )
     // console.log(chatObject,"checkFind")
 
-//  useEffect(() => {
-//     console.log("CHAT DETAILS RENDER")
-//     getCatById()
-//     .then((response) => {
-//     getChats()  
-//     .then((chat) => {const filteredChatsByCat = chat.filter(chat => chat.catId === cat.id)
-//     setFilteredChats(filteredChatsByCat)
-//     setCat(response)
-//     debugger
-//     })
+ useEffect(() => {
+    console.log("CHAT DETAILS RENDER")
+    getCatById()
+    .then((response) => {
+    getChats()  
+    .then((chat) => {const filteredChatsByCat = chat.filter(chat => chat.catId === cat.id)
+    setFilteredChats(filteredChatsByCat)
+    setCat(response)
     
-//     })
+    })
+    
+    })
 
-//   }, [])
+  }, [])
 
   return (
     <div className="chats">
@@ -56,7 +56,7 @@ export const ChatList = () => {
       {
         chats.map(chat => {
           // debugger
-          // const Cat = chats.find (c => c.catId === cat.id)
+          const Cat = chats.find (c => c.catId === cat.id)
           return <ChatCard key={chat.id} chat={chat}  />
         })
       }
