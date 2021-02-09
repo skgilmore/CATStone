@@ -1,0 +1,28 @@
+
+
+.pic, .userDefaultPic {
+    margin: .5rem;
+    padding: .5rem;
+    width: 10rem;
+    height: 10rem;
+    border: double #FFBF69 5px;
+    border-radius: 5px;
+    background-color: white;
+}
+.cats {
+
+    display: grid;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .cats {
+    flex-basis: 28%;
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid goldenrod;
+}
+.card-img, .card-img-bottom, .card-img-top {
+    flex-shrink: 0;
+    width: 50%;
+}

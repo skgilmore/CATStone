@@ -41,35 +41,34 @@ export const CatList = () => {
         getCats()
             .then((response) => {
                 getUsersById(currentUser)
-                    .then((user) => {
-                        const filteredCatByZip = cats.filter(cat => cat.zip === user.zip)
-
-                        setFilteredCats(filteredCatByZip)
-                    })
+                .then((user) => {
+                    console.log("cats",cats)
+                    const filteredCatByZip = cats.filter(cat => cat.zip === user.zip)
+                    debugger
+                    setFilteredCats(filteredCatByZip)
+                })
             })
     }, [])
 
     return (
         <>
             <h2>Cats</h2>
-            <Button color="info" on onClick={() => { history.push("/cats/create") }}>
-                Add A Cat
-            </Button>{' '}
-            <div>
-
-            </div>
-            <div className="cats">
-                {console.log(cats, "allCats")}
                 {
                     filteredCats.map(cat => {
-
 
 /* -------------------- Map over the returned cats and display their info as assigned in CatCard Comp------------------- */
                         return <CatCard key={cat.id} cat={cat} zip={cat.zip} />
                     })
 
                 }
-            </div>
+            <Button color="info" on onClick={() => { history.push("/cats/create") }}>
+                Add A Cat
+            </Button>{' '}
+            
+
+            
+                {console.log(cats, "allCats")}
+            
 
         </>
     )

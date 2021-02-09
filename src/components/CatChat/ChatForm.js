@@ -42,23 +42,23 @@ export const ChatForm = () => {
     /* -------------------GET CATS BY ID W/ PARAMS, THEN GET CHATS-------------------- */
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
 
-        getCatById()
-        if (chatId) {
+    //     // getCatById()
+    //     // if (chatId) {
 
-            getChats()
-                .then(chat => {
-                    setChat(chat)
-                    setIsLoading(false)
-                })
-        } else {
-            setIsLoading(false)
-        }
+    //         getChats()
+    //             .then(chat => {
+    //                 setChat(chat)
+    //                 setIsLoading(false)
+    //             })
+    //     } else {
+    //         setIsLoading(false)
+    //     }
 
 
-    }, [])
+    // }, [])
     /* -------------------CHECK CURRENT USER AND SET NEW PROPS W/ DOT NOTATION -------------------- */
 
 
@@ -105,7 +105,13 @@ export const ChatForm = () => {
         }
 
     }
-
+    // handleFieldChange = evt => {
+    //     const stateToChange = {}
+    //     stateToChange[evt.target.id] = evt.target.value
+    //     setState(stateToChange)
+    //     sendMessage(e, this.state.messageField)
+    //     setState({messageField: ""})
+    //   }
     /* -------------------- ALLOW USERS TO ADD A CHAT AND DESIGNATE PROPS USING FORM -------------------- */
 
 
@@ -117,6 +123,7 @@ export const ChatForm = () => {
                 <Label for="newChat"></Label>
                 <Input type="type" name="chat" id="note" onChange={handleControlledInputChange} required autoFocus className="form-control"
                     placeholder="Chat" value={chat.note}
+                    // onInput= {e => handleFieldChange (e)}
                 />
             </FormGroup>
 

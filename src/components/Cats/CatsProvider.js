@@ -15,8 +15,9 @@ export const CatProvider = (props) => {
         .then(res => res.json())
         .then(setCats)
     }
+    
     const addCat = catObj => {
-        return fetch("http://localhost:8088/cats?_expand=user", {
+        return fetch("http://localhost:8088/cats", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -27,9 +28,11 @@ export const CatProvider = (props) => {
     }
     
 
-    const getCatById = (id) => {
-        return fetch(`http://localhost:8088/cats/${id}`)
+    const getCatById = (catId) => {
+        console.log("why now")
+        return fetch(`http://localhost:8088/cats/${catId}?_embed=chats`)
             .then(res => res.json())
+            
     }
 
     const deleteCat = catId => {
