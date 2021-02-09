@@ -1,22 +1,25 @@
 import React, { useContext, useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom';
-import { Button, Form, CardSubtitle, CardTitle, Card, Label, Input, FormText, CardText } from 'reactstrap';
+import { CardTitle, Card, CardText, Button } from 'reactstrap';
 import { ChatContext } from "./ChatProvider";
-import { CatContext } from "../Cats/CatsProvider";
+// import { CatContext } from "../Cats/CatsProvider";
 
 
 /* -------------------- The displayed content of a cHat-------------------- */
 
-export const ChatCard = ({ chat }) => {
+export const ChatCard = ({ chat, cat }) => {
     const { chats, getChats, getChatById, deleteChat } = useContext(ChatContext)
     const history = useHistory()
     const { catId } = useParams();
+
     const handleRelease = (event) => {
         deleteChat(chat.id)
             .then(getChats)
-
+        // .then(window.location.reload())
 
     }
+
+
 
     if (chat.userId === parseInt(localStorage.getItem("capstone_customer"))) {
         return (
@@ -46,7 +49,7 @@ export const ChatCard = ({ chat }) => {
             </div>
 
         )
-    }
+      }
 
 }
 

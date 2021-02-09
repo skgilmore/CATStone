@@ -5,10 +5,9 @@ import { CatForm } from "../components/Cats/CatForm"
 import { CatList } from "../components/Cats/CatsList"
 import { CatProvider } from "../components/Cats/CatsProvider"
 import { ChatProvider } from "./CatChat/ChatProvider"
-import { Home } from "./Home"
 import { UserProvider } from "./Users/UsersProvider"
 import { ChatForm } from "./CatChat/ChatForm"
-import { ChatList } from "./CatChat/ChatDetails"
+// import { ChatList } from "./CatChat/ChatDetails"
 
 
 export const ApplicationViews = () => {
@@ -24,17 +23,17 @@ export const ApplicationViews = () => {
                         </Route>
                         <Route path="/cats/detail/:catId(\d+)">
                             <CatDetail />
-                        </Route>
-                        <Route path="/cats/detail/:catId(\d+)">
-
                             <ChatForm />
+                            {/* <ChatList /> */}
+                        </Route>
+                        {/* <Route path="/cats/detail/:catId(\d+)">
+
 
                         </Route>
                         <Route path="/cats/detail/:catId(\d+)">
 
-                            <ChatList />
 
-                        </Route>
+                        </Route> */}
 
 
                         <Route exact path="/cats/create">
