@@ -17,12 +17,14 @@ return (
         <Col sm="4">
         <Card>
             <CardBody>
+
                 <CardImg top width="100%" src={cat.pic} alt="Card image cap" />
                 <CardTitle tag="h5" section className="catCard"></CardTitle>
                 <CardSubtitle tag="h6" className="mb-2 text-muted" h3 className="cat__name">{cat.name}</CardSubtitle>
+  
                 <Link to={`/cats/detail/${cat.id}`}>
                     {cat.name}
-                </Link>
+                </Link></CardSubtitle>
                 <address className="cat__zip">{cat.zip}</address>
             </CardBody>
         </Card>
