@@ -7,34 +7,21 @@ import { CatProvider } from "../components/Cats/CatsProvider"
 import { ChatProvider } from "./CatChat/ChatProvider"
 import { UserProvider } from "./Users/UsersProvider"
 import { ChatForm } from "./CatChat/ChatForm"
-// import { ChatList } from "./CatChat/ChatDetails"
-
 
 export const ApplicationViews = () => {
     return (
         <>
-
-
             <CatProvider>
                 <UserProvider>
                     <ChatProvider>
                         <Route exact path="/cats">
                             <CatList />
                         </Route>
+
                         <Route path="/cats/detail/:catId(\d+)">
                             <CatDetail />
                             <ChatForm />
-                            {/* <ChatList /> */}
                         </Route>
-                        {/* <Route path="/cats/detail/:catId(\d+)">
-
-
-                        </Route>
-                        <Route path="/cats/detail/:catId(\d+)">
-
-
-                        </Route> */}
-
 
                         <Route exact path="/cats/create">
                             <CatForm />

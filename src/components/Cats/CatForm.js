@@ -9,15 +9,13 @@ export const CatForm = () => {
   const { users, getUsers } = useContext(UserContext)
 
   /* -------------------- ASSIGN PROPS TO A CAT AND HOLD STATE OF CAT IN CURRENT VIEW -------------------- */
-
   const [cat, setCat] = useState({
     id: 0,
     name: "",
-    userId: 0,
+    userId: null,
     zip: 0,
     color: "",
     pic: ""
-
   })
   /* --------------WAIT FOR DATA BEFORE BTN IS ACTIVE -------------------- */
 
@@ -33,10 +31,8 @@ export const CatForm = () => {
   useEffect(() => {
     getUsers().then(getCats)
     console.log(getCatById, "all cats?")
-
   }, [])
   /* -------------------- GET LOCAL STORAGE ID, PARSE INT IN PROPS AND ADD VALUE OF NEW PROPS WITH DOT NOTATION-------------------- */
-
 
   const handleControlledInputChange = (event) => {
     const newCat = { ...cat }
@@ -45,32 +41,18 @@ export const CatForm = () => {
     console.log(currentUser, "user")
     if (event.target.name.includes("adopted")) {
       newCat.userId = currentUser
-
-      console.log(currentUser, "whats here?")
     }
     else {
-      event.target.value = 0
+      event.target.value = null
     }
     setCat(newCat)
-    console.log(newCat)
   }
-
-
-
-
   const handleAddCat = (event) => {
-
-    if (parseInt(cat.zip) === 0) {
-      window.alert("Please input a zip code")
+    if (parseInt(cat.zip) === 0 || (cat.color === "")) {
+      window.alert("Please fill out all areas")
     }
     else {
       setIsLoading(true);
-      {
-        if
-          (parseInt(cat.color) === 0)
-          window.alert("Please select a description")
-      }
-
       if (catId) {
         //PUT - update
         updateCat({
@@ -93,29 +75,24 @@ export const CatForm = () => {
           pic: cat.pic
         })
           .then(() => history.push("/cats"))
-
       }
     }
   }
-
   /* -------------------- ALLOW USERS TO ADD A CAT AND DESIGNATE PROPS USING FORM -------------------- */
-
   return (
     <Form>
       <FormGroup>
         <Label for="newCatName">Name</Label>
         <Input type="text" name="catName" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Name of Furry Friend" value={cat.name} />
-
       </FormGroup>
       <FormGroup>
         <Label for="zip">Zip Code</Label>
         <Input type="text" name="zip" id="zip" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Zip Code of Cat" value={cat.zip} />
-
       </FormGroup>
       <FormGroup>
         <Label for="color">Description</Label>
         <Input type="select" name="color" id="color" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder=" Color of Cat" value={cat.color}  >
-          <option value="null" >Please Select a Color</option>
+          <option value="0" >Please Select a Color</option>
           <option >Orange</option>
           <option>Yellow</option>
           <option>Gray</option>
@@ -124,16 +101,12 @@ export const CatForm = () => {
           <option>Brown</option>
           <option>Calico</option>
           <option>Striped</option>
-
-
         </Input>
       </FormGroup>
-
       <FormGroup tag="fieldset">
         <legend>Radio Buttons</legend>
         <FormGroup check>
           <Label check>
-            {/* <Label for="newCatName">Name</Label> */}
             <Input type="radio" name="adopted" id="userId" onChange={handleControlledInputChange} value={cat.userId} />{' '}
             Do you take this cat to be yours for better or worse as long as you both shall live...in this neighborhood?
             </Label>
@@ -145,8 +118,7 @@ export const CatForm = () => {
           </Label>
         </FormGroup>
         <FormGroup check disabled>
-
-        </FormGroup>         I sure hope this cat finds a home...
+        </FormGroup>         I sure hope it finds one...
       </FormGroup>
       <div>
         <Button
