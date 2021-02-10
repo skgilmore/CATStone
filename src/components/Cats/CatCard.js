@@ -14,6 +14,7 @@ export const CatCard = ({ cat }) => {
 
     if (cat.userId === null) {
         return (
+            <div name="catDetail">
             <Col sm="4">
                 <Card>
                     <CardBody>
@@ -27,6 +28,7 @@ export const CatCard = ({ cat }) => {
                     </CardBody>
                 </Card>
             </Col>
+            </div>
         )
     }
     else {
