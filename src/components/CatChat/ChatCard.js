@@ -18,9 +18,6 @@ export const ChatCard = ({ chat, cat }) => {
         // .then(window.location.reload())
 
     }
-
-
-
     if (chat.userId === parseInt(localStorage.getItem("capstone_customer"))) {
         return (
 
@@ -32,15 +29,10 @@ export const ChatCard = ({ chat, cat }) => {
                     {/* <Button onClick={() => { history.push(`/cats/detail/${catId}`)  }}>Edit</Button>  */}
                 </Card>
             </div>
-
         )
-
     }
-
     else {
-
         return (
-
             <div>
                 <Card body inverse color="info">
                     <CardTitle tag="h5">Note:</CardTitle>
@@ -49,7 +41,7 @@ export const ChatCard = ({ chat, cat }) => {
             </div>
 
         )
-      }
+    }
 
 }
 

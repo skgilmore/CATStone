@@ -11,7 +11,6 @@ export const Capstone = () => (
         if (localStorage.getItem("capstone_customer")) {
           return (
             <>
-              {/* <NavBar /> */}
               <ApplicationViews />
             </>
           );
@@ -20,7 +19,6 @@ export const Capstone = () => (
         }
       }}
     />
-
     <Route path="/login">
       <Login />
     </Route>

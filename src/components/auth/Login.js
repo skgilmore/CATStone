@@ -6,15 +6,11 @@ import { CatContext } from "../Cats/CatsProvider";
 import { UserContext } from "../Users/UsersProvider";
 import "./Login.css"
 
-
-
 export const Login = props => {
     const email = useRef()
     const password = useRef()
     const existDialog = useRef()
     const history = useHistory()
- 
-
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(res => res.json())
