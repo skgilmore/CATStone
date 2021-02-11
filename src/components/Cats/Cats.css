@@ -1,19 +1,15 @@
-.pic, .userDefaultPic {
-    margin: .5rem;
-    padding: .5rem;
-    width: 10rem;
-    height: 10rem;
-    border: double #FFBF69 5px;
-    border-radius: 5px;
-    background-color: white;
-}
-.cats {
+/* .cats {
     display: grid;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
-  }
+  } */
   .cats {
+    display: flex;
+flex-direction: column;
+    justify-content: space-between;
+  }
+  .catDetails {
     flex-basis: 28%;
     margin: 1em;
     padding: 1em;
@@ -29,6 +25,7 @@ element.style {
     max-height: 33rem;
 }
 .catStuff{
+    /* cat Details Page */
     display: flex;
     justify-content: center;
 }
@@ -37,10 +34,11 @@ CardText{
     border: lightgray solid 1px;
     border-radius: 5px;
 }
+/* }
 .wholecatdetails {
-    display: flex;
+    display: flex; */
     /* justify-content: center; */
-}
+/* } */
 /* .card {
     position: relative;
     display: flex;
@@ -86,8 +84,33 @@ width: 40%
     font-weight: 700;
     line-height: 1;
     text-align: center;
+    /* wrap: hard; */
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.card-flex-item {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex; 
+	width: 100%;
+	padding-right: 0;
+}
+.card-flex-wrapper {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+
+	  background-color: #FFFFCC;
+    border-radius: 5px;
+    margin-bottom: 1em;
+    margin-right: 0;
+    padding: 1em;
 }
