@@ -9,6 +9,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       {/* <Home /> */}
+
       <Capstone />
     </Router>
   </React.StrictMode>,
