@@ -3,11 +3,13 @@ import { useHistory, useParams } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from "react"
 import { CatContext } from './CatsProvider';
 import { UserContext } from '../Users/UsersProvider';
-
+import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 export const CatForm = () => {
   const { addCat, getCatById, getCats, updateCat } = useContext(CatContext)
   const { users, getUsers } = useContext(UserContext)
 
+  // const [isLoading, setIsLoading]= useState(true);
+  const [pic, setPic]= useState("")
   /* -------------------- ASSIGN PROPS TO A CAT AND HOLD STATE OF CAT IN CURRENT VIEW -------------------- */
   const [cat, setCat] = useState({
     id: 0,
@@ -15,8 +17,28 @@ export const CatForm = () => {
     userId: null,
     zip: 0,
     color: "",
-    pic: ""
+    pic: "",
+    // imageURL: ""
   })
+  const [loading, setLoading] = useState(false)
+
+  const uploadImage = async e =>{
+    const files = e.target.files
+    const data = new FormData()
+    data.append("file", files[0]);
+    data.append("upload_preset","catstone")
+    setLoading (true)
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/deaoaorkg/image/upload",
+      {
+        method:"Post",
+        body: data,
+      }
+    )
+    const file = await response.json()
+    setPic(file.secure_url)
+    setLoading(false)
+  }
   /* --------------WAIT FOR DATA BEFORE BTN IS ACTIVE -------------------- */
 
   const [isLoading, setIsLoading] = useState(true);
@@ -72,7 +94,7 @@ export const CatForm = () => {
           color: cat.color,
           zip: parseInt(cat.zip),
           userId: parseInt(cat.userId),
-          pic: cat.pic
+          pic: pic
         })
           .then(() => history.push("/cats"))
       }
@@ -80,7 +102,20 @@ export const CatForm = () => {
   }
   /* -------------------- ALLOW USERS TO ADD A CAT AND DESIGNATE PROPS USING FORM -------------------- */
   return (
-    <Form>
+    <>
+<Form>
+
+    <div className="image">
+    <div>Upload Image</div>
+    <input type="file" name="file" placeholder="Upload an image" onChange={uploadImage}/>
+    {loading ? (
+        <h3>Loading...</h3>
+    ) : (
+            <img src={pic} style={{ width: "100px" }} />
+        )}
+</div>
+
+
       <FormGroup>
         <Label for="newCatName">Name</Label>
         <Input type="text" name="catName" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Name of Furry Friend" value={cat.name} />
@@ -103,6 +138,15 @@ export const CatForm = () => {
           <option>Striped</option>
         </Input>
       </FormGroup>
+      {/* <FormGroup className=“image”>
+                <div>Upload Image</div>
+                <input type=“file” name=“file” placeholder=“Upload an image” onChange={uploadImage}/>
+                {loading ? (
+                    <h3>Loading...</h3>
+                ) : (
+                        <img src={imageURL} style={{ width: “100px” }} />
+                    )}
+            </FormGroup> */}
       <FormGroup tag="fieldset">
         <legend>Radio Buttons</legend>
         <FormGroup check>
@@ -128,6 +172,6 @@ export const CatForm = () => {
           }}>{catId ? "Save Cat" : "Add Cat"}</Button>
       </div>
     </Form>
-  );
+  </>);
 }
 

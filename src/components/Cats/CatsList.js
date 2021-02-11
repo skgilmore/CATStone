@@ -5,7 +5,6 @@ import { CatContext } from "./CatsProvider"
 import { Button, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { UserContext } from "../Users/UsersProvider";
 import { ChatContext } from "../CatChat/ChatProvider";
-import {App} from "./canvasjs.min"
 import "./Cats.css"
 
 export const CatList = () => {
