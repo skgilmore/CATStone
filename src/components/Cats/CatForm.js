@@ -3,7 +3,6 @@ import { useHistory, useParams } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from "react"
 import { CatContext } from './CatsProvider';
 import { UserContext } from '../Users/UsersProvider';
-import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 export const CatForm = () => {
   const { addCat, getCatById, getCats, updateCat } = useContext(CatContext)
   const { users, getUsers } = useContext(UserContext)

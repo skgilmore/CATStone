@@ -1,11 +1,9 @@
 import React from "react";
-import { Route, Redirect, } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { ApplicationViews } from "./ApplicationViews";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
-import {PieChart} from "../components/Chart"
-import Chart from 'chart.js';
-import {DoughnutController} from 'chart.js'
+
 
 
 export const Capstone = () => (

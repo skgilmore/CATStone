@@ -7,7 +7,6 @@ import { CatProvider } from "../components/Cats/CatsProvider"
 import { ChatProvider } from "./CatChat/ChatProvider"
 import { UserProvider } from "./Users/UsersProvider"
 import { ChatForm } from "./CatChat/ChatForm"
-// import { PieChart } from "./Chart"
 
 export const ApplicationViews = () => {
     return (
@@ -17,7 +16,6 @@ export const ApplicationViews = () => {
                     <ChatProvider>
                         <Route exact path="/cats">
                             <CatList />
-                            {/* <PieChart /> */}
 
                         </Route>
 
