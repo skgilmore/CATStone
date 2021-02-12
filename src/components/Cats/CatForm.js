@@ -17,7 +17,6 @@ export const CatForm = () => {
     zip: 0,
     color: "",
     pic: "",
-    // imageURL: ""
   })
   const [loading, setLoading] = useState(false)
 

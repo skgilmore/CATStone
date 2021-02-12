@@ -1,59 +1,81 @@
-// // import React, { Component, useState , useContext,useEffect} from 'react'
-// import React, { useContext, useEffect, useState,Component } from "react"
-// // import {Doughnut} from 'react-chartjs-2'
-// import { CatContext } from '../Cats/CatsProvider'
-// import {Doughnut} from 'Canvas.js'
+// import React, { Component, useState , useContext,useEffect} from 'react'
+import React, { useContext, useEffect, useState,Component } from "react"
+import {Doughnut} from 'react-chartjs-2'
+import { CatContext } from '../Cats/CatsProvider'
 
     
-//     export  const PieChart = ({ cat }) => {
-//         const { cats, getCats} = useContext(CatContext)
-//       const [adoptedCatsState, setAdoptedCats] = useState({})
-//       const [unAdoptedCatsState, setUnAdoptedCats] = useState({})
+    export  const PieChart = ({ cat }) => {
+        const { cats, getCats} = useContext(CatContext)
+      const [adoptedCatsState, setAdoptedCats] = useState({})
+      const [unAdoptedCatsState, setUnAdoptedCats] = useState({})
+    //   const [cat, setCat] = useState({})
     
-//     let adoptedCats = [];
-//     let unadoptedCats =[]; 
 
-//     window.onload = function () {
-   
-//     useEffect(()  => {
-//         const filteredCats = cats.filter(cat => cat.userId === null)
-//         setUnAdoptedCats(filteredCats)
-//     console.log(filteredCats,"filteredCats")
-//       }, [cats]
-//       )
-//       useEffect(()  => {
-//         const filteredAdoptedCats = cats.filter(cat => cat.userId !== null)
-//         setAdoptedCats(filteredAdoptedCats)
-//     console.log(filteredAdoptedCats,"filteredAdoptedCats")
-//       }, [cats]
-//       )
-//       var chart = new CanvasJS.Chart("chartContainer", {
-//         animationEnabled: true,
-//         title:{
-//             text: "Adopt Today!",
-//             horizontalAlign: "left"
-//         },
-//      data:[{
-//          type: "doughnut",
-//          startAngle: 60,
-//          indexLabelFontSize: 17,
-//          indexLabel: "{label} - #percent%",
-//          toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-//          dataPoints:[
-//              {  adoptedCatsState },
-//              { unAdoptedCatsState}
-//          ]
-//         }]
-//     });
-// }}
-//     // return (
     
-//     //     chart.render()
-//     // </script>
-//     // </head>
-//     // <body>
-//     // <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-//     // <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-//     // </body>
-//     // </html>
-//     // )}
+    useEffect(()  => {
+        getCats()
+        
+    }, [])
+
+    useEffect(()  => {
+        const filteredAdoptedCats = cats.filter(cat => cat.userId !== null)
+        setAdoptedCats(filteredAdoptedCats)
+        const filteredCats = cats.filter(cat => cat.userId === null)
+        setUnAdoptedCats(filteredCats)
+        console.log(filteredCats,"filteredCats")
+        console.log(filteredAdoptedCats,"filteredAdoptedCats")
+    }, [cats])
+
+//     let adoptedNumber = adoptedCatsState.length
+    
+//    let unAdoptedNumber = unAdoptedCatsState.length
+
+
+//    console.log(adoptedNumber,"adopt cat length")
+//    console.log(unAdoptedNumber,"homlesscats")
+   return (
+    //  <Doughnut = () => {
+        // animationEnabled: true,
+    
+        <div>
+            <Doughnut
+ data= {{
+     text:  "Seeing these guys get adopted is Mew-sic to my ears!",
+     
+     labels:['Adopted','UnAdopted'],
+     
+     datasets:[
+         {
+             label:"# of adopted Cats",
+             data: [adoptedCatsState.length,unAdoptedCatsState.length,],
+             backgroundColor:[
+                 'rgba(87, 163, 83)',
+                 'rgba(145, 55, 55)',
+                ],
+                borderWidth:1 
+            },
+            
+            
+        ]
+    }
+    }
+    height={400}
+    width={600}
+    
+    options ={{
+        animationEnabled: true,
+        maintainAspectRatio: false,
+        title: {
+            display: true,
+                       text: "So many strays... Fur-Real?!",
+        },
+        }
+    }
+
+
+    />
+    </div>
+
+    )
+}
+  
