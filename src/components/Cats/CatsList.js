@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { CatCard } from "./CatCard"
 import { CatContext } from "./CatsProvider"
-import { Button, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
+import { Button, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Navbar } from 'reactstrap';
 import { UserContext } from "../Users/UsersProvider";
 import { ChatContext } from "../CatChat/ChatProvider";
 import "./Cats.css"
@@ -40,15 +40,16 @@ export const CatList = () => {
                     })
             })
     }, [])
-    const handleLogOutBtn = () => {
-        history.push(``)
-        localStorage.clear()
-    }
+    // const handleLogOutBtn = () => {
+    //     history.push(``)
+    //     localStorage.clear()
+    // }
     return (
         <>
-            <div className="bg-info clearfix" style={{ padding: '.5rem' }}>
+        {/* <Navbar className="bg-info clearfix" style={{ padding: '.5rem' }}>
                 <button onClick={handleLogOutBtn} className="btn btn-secondary float-right">Log Out</button>
-            </div>
+            </Navbar> */}
+            
             <h2>Cats</h2>
             {!filteredCats.length>0 ?   <h3>There are no strays listed in your area...check out the add a cat button</h3> : 
             
@@ -58,9 +59,10 @@ export const CatList = () => {
                 })
             }
 
-            <div className="bg-info clearfix" style={{ padding: '.5rem' }}>
+            {/* <div className="bg-info clearfix" style={{ padding: '.5rem' }}>
             <button onClick={() => { history.push("/cats/create") }}className="btn btn-secondary float-middle">Add A Cat</button>
-            </div> 
+            </div>  */}
         </>
+    
     )
 }
