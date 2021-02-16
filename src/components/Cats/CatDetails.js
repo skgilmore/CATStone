@@ -82,13 +82,16 @@ export const CatDetail = () => {
         {/* <CardImg top width="100%" src={images.blackCat.jpg}> </CardImg> */}
         <CardBody>
           <CardImg top width="10%" src={cat.pic} className="catPic"></CardImg>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">Location: {cat.zip}</CardSubtitle>
-          {/* <div className="cat__zip"></div> */}
+          {/* <br></br> */}
           <CardText className="cat__color">Color of Cat: {cat?.color}</CardText>
-          {!cat.userId ? <Label check>
+          {/* <CardText tag="h6" className="mb-2 text-muted">Location: {cat.zip}</CardText> */}
+          {/* <div className="cat__zip"></div> */}
+          <br></br>
+          {!cat.userId ? 
+          <Label check>
          <Input type="radio" name="adopted" id="userId" onChange={handleControlledInputChange} value={cat.userId} />{' '}
             Being a stray is a CATastrophe!
-            <br></br>
+            {/* <br></br> */}
             Will you adopt me?
             </Label> : ""}
             <Button size="sm"

@@ -8,6 +8,11 @@ import { ChatProvider } from "./CatChat/ChatProvider"
 import { UserProvider } from "./Users/UsersProvider"
 import { ChatForm } from "./CatChat/ChatForm"
 import { PieChart } from "./CatChat/Chart"
+import { Navbar } from "reactstrap"
+import { Navigation } from "./Cats/NavBar"
+
+
+
 
 export const ApplicationViews = () => {
     return (
@@ -16,9 +21,17 @@ export const ApplicationViews = () => {
                 <UserProvider>
                     <ChatProvider>
                         <Route exact path="/cats">
-                            <CatList />
-                            <PieChart/>
+                        <Navigation />
 
+                        <section className="homePage" >
+                            <div name="flexLeft"> 
+                               <CatList />
+                               </div>
+                      <div className="flexRight">
+                     
+                            <PieChart />
+                            </div>
+                            </section>
                         </Route>
 
                         <Route path="/cats/detail/:catId(\d+)">

@@ -1,4 +1,4 @@
-import React from "react"
+// import React from "react"
 import { Link } from "react-router-dom"
 import Black from '../images/Black.png'
 import "./Cats.css"
@@ -15,44 +15,55 @@ export const CatCard = ({ cat }) => {
     if (cat.userId === null) {
         return (
             <div name="catDetail">
-            <Col sm="4">
-                <Card>
-                    <CardBody>
-                        <CardImg top width="100%" src={cat.pic} alt="Card image cap" />
-                        <CardTitle tag="h5" className="catCard"></CardTitle>
-                        <CardSubtitle tag="h6" className="mb-2 text-muted" className="cat__name">{cat.name}</CardSubtitle>
-                        <Link to={`/cats/detail/${cat.id}`}>
-                            {cat.name}
+            <CardGroup>
+            {/* <Col sm="4">      */}
+                
+         <CardBody >
+                <Card >
+                          <Link to={`/cats/detail/${cat.id}`}> 
+                        <CardTitle tag="h5" className="mb-2 text-muted" className="cat__name">{cat.name}
+                        <CardImg top width="100%" src={cat.pic} alt="Card image cap"></CardImg></CardTitle>
                         </Link>
-                        <address className="cat__zip">{cat.zip}</address>
-                    </CardBody>
+                        {/* </CardTitle> */}
+                        {/* <h5> <span class="badge badge-info">Adopted</span></h5> */}
+                        {/* <Badge color="info">Adopted </Badge> */}
+                        <br></br>     
+                        <br></br>
+                        <wbr></wbr>
+                        {/* <address className="cat__zip">{cat.zip}</address> */}
                 </Card>
-            </Col>
+                    </CardBody>
+                {/* </Col> */}
+            </CardGroup>        
             </div>
         )
     }
     else {
         return (
+            <>
 <div name="catDetail">
             <CardGroup>
-            <Col sm="4">     
+            {/* <Col sm="4">      */}
                 
-                <Card >
          <CardBody >
-                        <CardImg top width="100%" src={cat.pic} alt="Card image cap" />
-                        <CardTitle tag="h5" className="catCard"></CardTitle>
-                        <Badge color="info">Adopted </Badge>{' '}
-                        <br></br>     
-                        <CardSubtitle tag="h5" className="mb-2 text-muted" className="cat__name"><em>{cat.name}</em></CardSubtitle>
-                          <Link to={`/cats/detail/${cat.id}`}>
-                            {cat.name}
+                <Card >
+                          <Link to={`/cats/detail/${cat.id}`}> 
+                        <CardTitle tag="h5" className="mb-2 text-muted" className="cat__name">{cat.name}
+                        <CardImg top width="100%" src={cat.pic} alt="Card image cap"></CardImg> <h5> <span class="badge badge-info">Adopted 
+                       </span></h5></CardTitle>
                         </Link>
-                        <address className="cat__zip">{cat.zip}</address>
-                    </CardBody>
+                        {/* </CardTitle> */}
+                        {/* <h5> <span class="badge badge-info">Adopted</span></h5> */}
+                        {/* <Badge color="info">Adopted </Badge> */}
+                        <br></br>     
+                        <br></br>
+                        <wbr></wbr>
+                        {/* <address className="cat__zip">{cat.zip}</address> */}
                 </Card>
-                </Col>
+                    </CardBody>
+                {/* </Col> */}
             </CardGroup>        
             </div>
-        )
+     </>   )
     }
 }
