@@ -49,7 +49,7 @@ When a user first registers an account with CATStone, providing their zip code, 
   ## Appendix 1: Planning Documentation
 
   ### Entity Relationship Diagram
-  ![CATStone](src\components\images\CATStoneERD.PNG)
+  <img src="src\components\images\CATStoneERD.PNG" width="55%">
 
   ### Wireframes/ Mockups
   <img src="src\components\images\catDetails.PNG" width="45%"></img> <img src="src\components\images\loginForm.PNG" width="45%"></img>
