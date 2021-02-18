@@ -12,7 +12,7 @@
 
 ## Project Requirements and Features List
 ### Get Started
-When a user first registers an account with CATStone, providing their zip code, they will be taken to a landing page showing all known strays in their area.They then have the ability to select a select a known stray in the area to learn more about the cat, chat about the cat or adopt the cat if has not already been adopted. They have the ability to delete chats that they have posted, delete a cat if it is no longer living in their area, add a cat to their zip code with details and a photo or they may log out.
+When a user first registers an account with CATStone, providing their zip code, they will be taken to a landing page showing all known strays in their area.They can see a live data doughnut chart displaying the ratio of unadopted to adopted cats for their area. They then have the ability to select a select a known stray in the area to learn more about the cat, chat about the cat or adopt the cat if has not already been adopted. They have the ability to delete chats that they have posted, delete a cat if it is no longer living in their area, add a cat to their zip code with details and a photo or they may log out.
 ![Get Started GIF](src/components/images/CATStonePreview.gif)
 
 ## Technologies Used
@@ -20,7 +20,7 @@ When a user first registers an account with CATStone, providing their zip code, 
   <img src="./src/components/images/bootstrap.png" width="10%"></img> <img src="./src/components/images/cloudinary.jpg" width="10%"></img> <img src="./src/components/images/GitHub.png" width="10%"></img> <img src="./src/components/images/reactstrap.png" width="10%"></img><img src="./src/components/images/vscode.jpg" width="10%"></img>
 
 
-## Instructions for Installing Simplified Supper
+## Instructions for Installing CATStone
   To launch the CATStone app, you will need to have access to command line tools, node package manager, JSON Server. If you do not have access to any of these tools, you can find instructions for installing them in the [Appendix.](#appendix-2-set-up-instructions)
 
   Clone this repo on you personal machine using the following command
