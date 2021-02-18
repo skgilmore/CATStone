@@ -1,13 +1,13 @@
-import { Button, Form, FormGroup, Label, Input, FormText, CardText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useHistory, useParams } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from "react"
 import { CatContext } from './CatsProvider';
 import { UserContext } from '../Users/UsersProvider';
+
 export const CatForm = () => {
   const { addCat, getCatById, getCats, updateCat } = useContext(CatContext)
-  const { users, getUsers } = useContext(UserContext)
+  const { getUsers } = useContext(UserContext)
 
-  // const [isLoading, setIsLoading]= useState(true);
   const [pic, setPic]= useState("")
   /* -------------------- ASSIGN PROPS TO A CAT AND HOLD STATE OF CAT IN CURRENT VIEW -------------------- */
   const [cat, setCat] = useState({
@@ -109,7 +109,7 @@ export const CatForm = () => {
     {loading ? (
         <h3>Loading...</h3>
     ) : (
-            <img src={pic} style={{ width: "100px" }} />
+            <img src={pic} className= "cat_pic" style={{ width: "100px" }} />
         )}
 </div>
 
@@ -134,17 +134,8 @@ export const CatForm = () => {
           <option>Brown</option>
           <option>Calico</option>
           <option>Striped</option>
-        </Input>
+          </Input>
       </FormGroup>
-      {/* <FormGroup className=“image”>
-                <div>Upload Image</div>
-                <input type=“file” name=“file” placeholder=“Upload an image” onChange={uploadImage}/>
-                {loading ? (
-                    <h3>Loading...</h3>
-                ) : (
-                        <img src={imageURL} style={{ width: “100px” }} />
-                    )}
-            </FormGroup> */}
       <FormGroup tag="fieldset">
         <legend>Radio Buttons</legend>
         <FormGroup check>

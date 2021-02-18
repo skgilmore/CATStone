@@ -8,7 +8,6 @@ import { ChatProvider } from "./CatChat/ChatProvider"
 import { UserProvider } from "./Users/UsersProvider"
 import { ChatForm } from "./CatChat/ChatForm"
 import { PieChart } from "./CatChat/Chart"
-import { Navbar } from "reactstrap"
 import { Navigation } from "./Cats/NavBar"
 
 

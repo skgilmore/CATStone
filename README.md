@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# CATStone
+  CATStone is intended to help neighborhoods come together to rescue, discuss and view strays in their zip code. When a user registers, the app saves their zip and filters it to show relevant feline  friends.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+  * [Project Requirements and Features List](#project-requirements-and-features-list)
+  * [Technologies Used](#technologies-used)
+  * [Installing and Launching CATStone](#instructions-for-installing-CATSTone)
+  * [Appendix 1: Planning Documentation](#appendix-1-planning-documentation)
+    * [Entity Relationship Diagrams](#entity-relationship-diagram)
+    * [Wireframes](#wireframes)
+  * [Appendix 2: Set Up Instructions](#appendix-2-set-up-instructions)
 
-## Available Scripts
+## Project Requirements and Features List
+### Get Started
+When a user first registers an account with CATStone, providing their zip code, they will be taken to a landing page showing all known strays in their area.They then have the ability to select a select a known stray in the area to learn more about the cat, chat about the cat or adopt the cat if has not already been adopted. They have the ability to delete chats that they have posted, delete a cat if it is no longer living in their area, add a cat to their zip code with details and a photo or they may log out.
+![Get Started GIF](src/components/images/CATStonePreview.gif)
 
-In the project directory, you can run:
+## Technologies Used
+  ### Development Languages and Libraries
+  <img src="./src/components/images/bootstrap.png" width="10%"></img> <img src="./src/components/images/cloudinary.jpg" width="10%"></img> <img src="./src/components/images/GitHub.png" width="10%"></img> <img src="./src/components/images/reactstrap.png" width="10%"></img><img src="./src/components/images/vscode.jpg" width="10%"></img>
 
-### `npm start`
+  ### Development Tools
+  <!-- TODO: Image for wireframe tool -->
+  <img src="./src/components/images/CATStonePreview.gif" width="10%">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Instructions for Installing Simplified Supper
+  To launch the CATStone app, you will need to have access to command line tools, node package manager, JSON Server. If you do not have access to any of these tools, you can find instructions for installing them in the [Appendix.](#appendix-2-set-up-instructions)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  Clone this repo on you personal machine using the following command
+  ```sh
+    git clone git@github.com:skgilmore/CATStone.git
+  ```
 
-### `npm test`
+  Install the NPM dependencies for this project using the following commands
+  ```sh
+    cd capstone
+    npm install
+  ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  From your terminal window, type
+  ```sh
+    npm start
+  ```
 
-### `npm run build`
+  Now that the server is up and running, you can open an internet browser and access the application
+  ```sh
+    http://localhost:8080/
+  ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ ### Congratulations you are now experiencing CATStone!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  ## Appendix 1: Planning Documentation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  ### Entity Relationship Diagram
+  ![CATStone](/src/components/images/CATStoneERD.png)
 
-### `npm run eject`
+  ### Wireframes/ Mockups
+  <img src="./src/components/images/catDetails.png" width="45%"></img> <img src="./src/components/images/loginForm.png" width="45%"></img>
+  <img src="./src/components/images/addACat.png" width="45%"></img> <img src="./src/components/images/Registration.png" width="45%"></img>
+  <img src="./src/components/images/landingPage.png" width="45%">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  ## Appendix 2: Set Up Instructions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  You will need to have command line tools installed for your computer to use terminal commands.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  Linux/ Windows users, please visit the [Git page](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and follow the instructions for set up
 
-## Learn More
+  Mac users follow the instructions below
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  Open your terminal and type
+  ```sh
+    git --version
+  ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  You will now need to configure your git account. In the terminal window, type:
+  ```sh
+    git config -global user.name "Your Name"
+    git config -global user.email "Your Email"
+  ```
 
-### Code Splitting
+  If you do not have Node.js installed on your machine, visit the [Node.js Download Page](https://nodejs.org/en/download/) and  follow the instructions. To ensure that it is installed correctly, in your terminal window, type
+  ```sh
+    echo $PATH
+  ```
+  Ensure that the result has the following in the $PATH
+  ```sh
+    /usr/local/bin
+    or
+    /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  Now you can follow the [installation instructions](#instructions-for-installing-CATStone) to get CATStone up and running on your machine.
 
-### Analyzing the Bundle Size
+  This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

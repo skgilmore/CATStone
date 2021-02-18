@@ -1,18 +1,15 @@
 import React, { useContext, useEffect, useState } from "react"
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button,Label,Input, Row } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, Button, Label, Input } from 'reactstrap';
 import { useParams, useHistory } from "react-router-dom"
 import { CatContext } from "./CatsProvider"
 import Black from '../images/Black.png'
 import "./Cats.css"
 import { ChatContext } from "../CatChat/ChatProvider";
 import { ChatCard } from "../CatChat/ChatCard";
-import { UserContext } from "../Users/UsersProvider";
-import { CatCard } from "./CatCard"
 
 export const CatDetail = () => {
   const { getCatById, deleteCat, updateCat } = useContext(CatContext)
-  const { chats, getChats, getChatById } = useContext(ChatContext)
-  const { getUsersById } = useContext(UserContext)
+  const { chats, getChats} = useContext(ChatContext)
   const [filteredChats, setFilteredChats] = useState([])
   const [cat, setCat] = useState({})
   const { catId } = useParams();
@@ -29,7 +26,7 @@ export const CatDetail = () => {
       })
   }, [])
 
-  useEffect(()  => {
+  useEffect(() => {
     const filteredChatsByCat = chats.filter(chat => chat.catId === cat.id)
     setFilteredChats(filteredChatsByCat)
 
@@ -51,61 +48,53 @@ export const CatDetail = () => {
   const currentUser = localStorage.getItem("capstone_customer")
   const handleControlledInputChange = (event) => {
     if (event.target.name.includes("adopted")) {
-    
+
       setIsLoading(true);
-      if (catId){
-      //PUT - update
-      updateCat({
-        id: cat.id,
+      if (catId) {
+        //PUT - update
+        updateCat({
+          id: cat.id,
           name: cat.name,
           color: cat.color,
           zip: parseInt(cat.zip),
           userId: parseInt(currentUser),
-          pic: cat.pic        
-      })
-      .then(() => history.push("/cats"))
+          pic: cat.pic
+        })
+          .then(() => history.push("/cats"))
+      }
     }
-  }
     else {
       event.target.value = null
     }
-    
+
   }
 
   //-------------------- DOM VIEW OF CAT DETAILS------------
   return (
     <section className="wholecatdetails">
-      {/* <Row xs="2"> */}
       <div className="catStuff">
-      <Card>
-        <CardTitle tag="h5" className="cat__name">{cat.name}</CardTitle>
-        {/* <CardImg top width="100%" src={images.blackCat.jpg}> </CardImg> */}
-        <CardBody>
-          <CardImg top width="10%" src={cat.pic} className="catPic"></CardImg>
-          {/* <br></br> */}
-          <CardText className="cat__color">Color of Cat: {cat?.color}</CardText>
-          {/* <CardText tag="h6" className="mb-2 text-muted">Location: {cat.zip}</CardText> */}
-          {/* <div className="cat__zip"></div> */}
-          <br></br>
-          {!cat.userId ? 
-          <Label check>
-         <Input type="radio" name="adopted" id="userId" onChange={handleControlledInputChange} value={cat.userId} />{' '}
+        <Card>
+          <CardTitle tag="h5" className="cat__name">{cat.name}</CardTitle>
+          <CardBody>
+            <CardImg top width="10%" src={cat.pic} className="catPic"></CardImg>
+            <CardText className="cat__color">Color of Cat: {cat?.color}</CardText>
+            <br></br>
+            {!cat.userId ?
+              <Label check>
+                <Input type="radio" name="adopted" id="userId" onChange={handleControlledInputChange} value={cat.userId} />{' '}
             Being a stray is a CATastrophe!
-            {/* <br></br> */}
             Will you adopt me?
             </Label> : ""}
             <Button size="sm"
               className="btn btn-primary"
               onClick={handleRelease}>Delete Cat</Button>
-        </CardBody>
-      </Card>
-              </div>
-            <div className="chatStuff">
-            {filteredChats.length > 0 ?   filteredChats.map(chat => { return <ChatCard key={chat.id} chat={chat} /> }) : "no chats"}
-      {console.log(filteredChats,"chatcheck")}
-      {/* </Row> */}
+          </CardBody>
+        </Card>
       </div>
-      {/* </Row> */}
+      <div className="chatStuff">
+        {filteredChats.length > 0 ? filteredChats.map(chat => { return <ChatCard key={chat.id} chat={chat} /> }) : "no chats"}
+        {console.log(filteredChats, "chatcheck")}
+      </div>
     </section>
   )
 

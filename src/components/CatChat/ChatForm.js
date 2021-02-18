@@ -1,17 +1,15 @@
-import { Button, Form, FormGroup, Label, Input, FormText, CardText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useHistory, useParams, } from 'react-router-dom';
-import React, { useContext, useEffect, componentDidMount, useState } from "react"
+import React, { useContext, useEffect,useState } from "react"
 import { CatContext } from '../Cats/CatsProvider';
-import { UserContext } from '../Users/UsersProvider';
 import { ChatContext } from './ChatProvider';
 import { ChatCard } from './ChatCard';
 
 
 
 export const ChatForm = () => {
-    const { chats, getChats, getChatById, deleteChat, updateChat, addChat } = useContext(ChatContext)
-    const { getCatById, getCats, cats } = useContext(CatContext)
-    const { users, getUsersById } = useContext(UserContext)
+    const { getChats, addChat } = useContext(ChatContext)
+    const { getCatById } = useContext(CatContext)
     const [filteredChats, setFilteredChats] = useState([])
     const currentUser = (localStorage.getItem("capstone_customer"))
 
@@ -32,8 +30,6 @@ export const ChatForm = () => {
 
     const { catId } = useParams();
     const { chatId } = useParams()
-    const history = useHistory();
-    const newGuy = catId
 
     /* -------------------GET CATS BY ID W/ PARAMS, THEN GET CHATS-------------------- */
     useEffect(() => {
@@ -62,8 +58,7 @@ export const ChatForm = () => {
     }
     const handleAddChat = (event) => {
         
-        
-        //POST - add
+          //POST - add
         addChat({
                 id: chat.id,
                 note: chat.note,
@@ -72,10 +67,7 @@ export const ChatForm = () => {
 
             })
 .then(setCat(catId))    
-            // .then(getChats)
-            // .then(window.location.reload())               .then(getChats)
-
-        
+ 
     }
 
     /* -------------------- ALLOW USERS TO ADD A CHAT AND DESIGNATE PROPS USING FORM -------------------- */
