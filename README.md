@@ -16,12 +16,9 @@ When a user first registers an account with CATStone, providing their zip code, 
 ![Get Started GIF](src/components/images/CATStonePreview.gif)
 
 ## Technologies Used
-  ### Development Languages and Libraries
+  ### Development Languages, Libraries and Tools
   <img src="./src/components/images/bootstrap.png" width="10%"></img> <img src="./src/components/images/cloudinary.jpg" width="10%"></img> <img src="./src/components/images/GitHub.png" width="10%"></img> <img src="./src/components/images/reactstrap.png" width="10%"></img><img src="./src/components/images/vscode.jpg" width="10%"></img>
 
-  ### Development Tools
-  <!-- TODO: Image for wireframe tool -->
-  <img src="./src/components/images/CATStonePreview.gif" width="10%">
 
 ## Instructions for Installing Simplified Supper
   To launch the CATStone app, you will need to have access to command line tools, node package manager, JSON Server. If you do not have access to any of these tools, you can find instructions for installing them in the [Appendix.](#appendix-2-set-up-instructions)
@@ -55,9 +52,9 @@ When a user first registers an account with CATStone, providing their zip code, 
   ![CATStone](/src/components/images/CATStoneERD.png)
 
   ### Wireframes/ Mockups
-  <img src="./src/components/images/catDetails.png" width="45%"></img> <img src="./src/components/images/loginForm.png" width="45%"></img>
-  <img src="./src/components/images/addACat.png" width="45%"></img> <img src="./src/components/images/Registration.png" width="45%"></img>
-  <img src="./src/components/images/landingPage.png" width="45%">
+  <img src="src\components\images\catDetails.PNG" width="45%"></img> <img src="src\components\images\loginForm.PNG" width="45%"></img>
+  <img src="src\components\images\addACat.PNG" width="45%"></img> <img src="src\components\images\Registration.PNG" width="45%"></img>
+  <img src="src\components\images\landingPage.PNG" width="45%">
 
 
   ## Appendix 2: Set Up Instructions
