@@ -8,7 +8,6 @@ export const CatList = () => {
     /* -------------------- To have access to cats -------------------- */
     const { getCats } = useContext(CatContext)
     const { getUsersById } = useContext(UserContext)
-   
     /* -------------------- Use use State to update the state of cats as it is changed -------------------- */
 
     const [filteredCats, setFilteredCats] = useState([])
@@ -35,17 +34,17 @@ export const CatList = () => {
                     })
             })
     }, [])
-  
     return (
         <>
             <h2>Cats</h2>
-            {!filteredCats.length>0 ?   <h3>There are no strays listed in your area...check out the add a cat button</h3> : 
-                filteredCats.map(cat => {
-                    /* -------------------- Map over the returned cats and display their info as assigned in CatCard Comp------------------- */
-                    return <CatCard key={cat.id} cat={cat} zip={cat.zip} />
-                })
-            }
+            <section className="listOfCards">
+                {!filteredCats.length > 0 ? <h3>There are no strays listed in your area...check out the add a cat option in the dropdown 😺 </h3> :
+                    filteredCats.map(cat => {
+                        /* -------------------- Map over the returned cats and display their info as assigned in CatCard Comp------------------- */
+                        return <CatCard key={cat.id} cat={cat} zip={cat.zip} />
+                    })
+                }
+            </section>
         </>
-    
     )
 }

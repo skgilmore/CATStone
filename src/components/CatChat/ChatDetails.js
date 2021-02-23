@@ -27,11 +27,8 @@ export const ChatList = () => {
             const filteredChatsByCat = chat.filter(chat => chat.catId === cat.id)
             setFilteredChats(filteredChatsByCat)
             setCat(response)
-
-          })
-
+        })
       })
-
   }, [])
 
   return (
@@ -39,7 +36,6 @@ export const ChatList = () => {
       {console.log("ChatList: Render", chats)}
       {
         chats.map(chat => {
-          // debugger
           const Cat = chats.find(c => c.catId === cat.id)
           return <ChatCard key={chat.id} chat={chat} />
         })

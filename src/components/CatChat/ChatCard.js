@@ -13,24 +13,27 @@ export const ChatCard = ({ chat, cat }) => {
 
     if (chat.userId === parseInt(localStorage.getItem("capstone_customer"))) {
         return (
-        <div name="catDetails">
-            <Card body inverse color="info">
-                    <CardTitle tag="h5">Note:</CardTitle>
-                    <CardText>{chat.note}</CardText>
-                    <Button size="sm" className="btn btn-secondary float-right" id="trash"onClick={handleRelease}>🗑️</Button>
-                  </Card>
-                    </div>
+            <>
+                <div name="catDetails">
+                    <Card body inverse color="info">
+                        <CardTitle tag="h4">Note:</CardTitle>
+                        <CardText>{chat.note}</CardText>
+                        <Button size="sm" className="btn btn-secondary float-right" id="trash" onClick={handleRelease}>🗑️</Button>
+                    </Card>
+                </div>
+            </>
         )
     }
     else {
         return (
-            <div name="catDetails">
-                <Card body inverse color="info">
-                    <CardTitle tag="h5">Note:</CardTitle>
-                    <CardText>{chat.note}</CardText>
-                </Card>
-            </div>
-
+            <>
+                <div name="catDetails">
+                    <Card body inverse color="info">
+                        <CardTitle tag="h4">Note:</CardTitle>
+                        <CardText>{chat.note}</CardText>
+                    </Card>
+                </div>
+            </>
         )
     }
 
