@@ -30,8 +30,6 @@ export const CatProvider = (props) => {
         })
             .then(getCats)
     }
-
-
     const getCatById = (catId) => {
         console.log("why now")
         return fetch(`http://localhost:8088/cats/${catId}?_embed=chats`)
@@ -45,20 +43,20 @@ export const CatProvider = (props) => {
     }
     const updateCat = cat => {
         return fetch(`http://localhost:8088/cats/${cat.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(cat)
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(cat)
         })
-          .then(getCats)
-      }
+            .then(getCats)
+    }
     /*
-           You return a context provider which has the
-           `cats` state, `getCats` deleteCats function,
-           and the `addCats
-   ` function as keys. This
-           allows any child elements to access them.
+    You return a context provider which has the
+    `cats` state, `getCats` deleteCats function,
+    and the `addCats
+    ` function as keys. This
+    allows any child elements to access them.
        */
     /* -------------------- To make the cats, and the cat functions available to other components i.e. expose child elements -------------------- */
     return (

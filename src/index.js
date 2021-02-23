@@ -8,8 +8,6 @@ import { Capstone } from './components/Capstone';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      {/* <Home /> */}
-
       <Capstone />
     </Router>
   </React.StrictMode>,

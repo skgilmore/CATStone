@@ -1,8 +1,9 @@
 import React from "react"
+import { Card, CardImg, CardBody, CardTitle, CardGroup } from 'reactstrap';
+// import { View } from 'react-native'
 import { Link } from "react-router-dom"
 import Black from '../images/Black.png'
 import "./Cats.css"
-import { Card, CardImg, CardBody, CardTitle, CardGroup } from 'reactstrap';
 
 /* -------------------- The displayed content of a cat-------------------- */
 
@@ -40,8 +41,9 @@ export const CatCard = ({ cat }) => {
                             <Card >
                                 <Link to={`/cats/detail/${cat.id}`}>
                                     <CardTitle tag="h5" className="mb-2 text-muted">{cat.name}
-                                        <CardImg top width="100%" src={cat.pic} alt="Card image cap"></CardImg> <h5> <span class="badge badge-info">Adopted
-                       </span></h5></CardTitle>
+                                        <h6> <span class="banner">Adopted</span></h6>
+                                        <CardImg top width="100%" src={cat.pic} alt="Card image cap"></CardImg>
+                                    </CardTitle>
                                 </Link>
                                 <br></br>
                                 <br></br>

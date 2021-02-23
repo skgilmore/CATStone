@@ -20,28 +20,19 @@ export const ApplicationViews = () => {
                 <UserProvider>
                     <ChatProvider>
                         <Route exact path="/cats">
-                        <Navigation />
-
-                        <section className="homePage" >
-                            <div name="flexLeft"> 
-                               <CatList />
-                               </div>
-                      <div className="flexRight">
-                     
+                            <Navigation />
                             <PieChart />
-                            </div>
-                            </section>
+                            <CatList />
                         </Route>
-
                         <Route path="/cats/detail/:catId(\d+)">
+                            <Navigation />
                             <CatDetail />
                             <ChatForm />
                         </Route>
-
                         <Route exact path="/cats/create">
+                            <Navigation />
                             <CatForm />
                         </Route>
-
                     </ChatProvider>
                 </UserProvider>
             </CatProvider>
