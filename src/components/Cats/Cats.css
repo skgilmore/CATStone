@@ -2,6 +2,7 @@
 body {
     font-family: 'Noto Serif', serif;
     background-image: url(../images/blue-snow.png);
+    /* Background pattern from Toptal Subtle Patterns */
 }
 .jumbotron {
     background-color: #9db8d3;
